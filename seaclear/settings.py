@@ -37,8 +37,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'coree',
+    'core',
+    'api',
+    'rest_framework'
 ]
+
+
+'''
+connect(
+    db='seaclearDB',
+    username='vuyani',
+    password='vuy12345678',
+    host='mongodb+srv://vuyani:vuy12345678@cluster0.cxlu5.mongodb.net/',
+    port=27017,  # Default: 27017
+    authentication_source='admin'  # Default: admin
+)'''
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -82,12 +96,14 @@ DATABASES = {
     }
 }
 '''
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'seaclearDB',  # Replace with your MongoDB database name
+        'NAME': 'seaclearDB',  
         'CLIENT': {
-            'host': 'mongodb+srv://vuyani:vuy12345678@cluster0.cxlu5.mongodb.net/',  # Replace with your MongoDB connection URI
+            'host': 'mongodb+srv://vuyani:vuy12345678@cluster0.cxlu5.mongodb.net/',  
             'username': 'vuyani',
             'password': 'vuy12345678'
         }

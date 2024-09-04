@@ -1,4 +1,4 @@
-from djongo import models
+from django.db import models
 from django.utils import timezone
 
 class Beach(models.Model):
@@ -73,4 +73,3 @@ class Source(models.Model):
 
     def __str__(self):
         return f"Source {self.source_id}"
-   

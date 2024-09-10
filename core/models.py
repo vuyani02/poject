@@ -29,15 +29,16 @@ class CommentSection(models.Model):
     def __str__(self):
         return f"Comment Section for {self.beach.name}"  
 
-class GeneralCommentSection(models.Model):
+'''class GeneralCommentSection(models.Model):
     title = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.title       
+        return self.title '''      
 
 class Comment(models.Model):
+    beach = models.ForeignKey(Beach, on_delete=models.CASCADE, null=True, blank=True)
     comment_section = models.ForeignKey(CommentSection, on_delete=models.CASCADE, related_name='comments')
-    general_comment_section = models.ForeignKey(GeneralCommentSection, on_delete=models.CASCADE, related_name='comments', null=True, blank=True)
+    #general_comment_section = models.ForeignKey(GeneralCommentSection, on_delete=models.CASCADE, related_name='comments', null=True, blank=True)
     user_name = models.CharField(max_length=100, default='Anonymous')
     text = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
@@ -45,12 +46,12 @@ class Comment(models.Model):
     def __str__(self):
         return f"Comment by {self.user_name} on {self.timestamp}"
     
-    def save(self, *args, **kwargs):
+    '''def save(self, *args, **kwargs):
         if self.beach and self.general_comment_section:
             raise ValueError("A comment cannot be linked to both a beach and a general comment section.")
         if not self.beach and not self.general_comment_section:
             raise ValueError("A comment must be linked to either a beach or a general comment section.")
-        super().save(*args, **kwargs)
+        super().save(*args, **kwargs)'''
 
 class Report(models.Model):
     CROWD_LEVEL_CHOICES = [(i, str(i)) for i in range(1, 11)]  # Choices from 1 to 10
@@ -76,11 +77,12 @@ class Source(models.Model):
     
 class Map(models.Model):
     map_id = models.AutoField(primary_key=True)
+    beach = models.ForeignKey('Beach', on_delete=models.CASCADE, related_name='map', null=True, blank=True)
     location = models.CharField(max_length=100)
     coordinateLat = models.FloatField(max_length=100)  
     coordinateLong = models.FloatField(max_length=100)
 
     def __str__(self):
-        return f"map {self.map_id}"
+        return  self.location
 
  

@@ -103,7 +103,7 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'seaclearDB',  
+        'NAME': 'seaclear',  
         'CLIENT': {
             'host': 'mongodb+srv://vuyani:vuy12345678@cluster0.cxlu5.mongodb.net/',  
             'username': 'vuyani',

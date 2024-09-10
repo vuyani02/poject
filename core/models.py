@@ -73,3 +73,14 @@ class Source(models.Model):
 
     def __str__(self):
         return f"Source {self.source_id}"
+    
+'''class Map(models.Model):
+    map_id = models.AutoField(primary_key=True)
+    location = models.CharField(max_length=100)
+    coordinateLat = models.FloatField(max_length=100)  
+    coordinateLong = models.FloatField(max_length=100)
+
+    def __str__(self):
+        return f"Source {self.map_id}"'''
+
+ 

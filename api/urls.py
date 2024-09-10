@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import BeachListCreate, BeachDetail, CommentSectionListCreate, CommentSectionDetail, GeneralCommentSectionListCreate, GeneralCommentSectionDetail, CommentListCreate, CommentDetail, ReportListCreate, ReportDetail, SourceListCreate, SourceDetail
+from .views import BeachListCreate, BeachDetail, CommentSectionListCreate, CommentSectionDetail, GeneralCommentSectionListCreate, GeneralCommentSectionDetail, CommentListCreate, CommentDetail, ReportListCreate, ReportDetail, SourceListCreate, SourceDetail, MapListCreate, MapDetail
 
 app_name = 'api'
 urlpatterns = [
@@ -20,4 +20,7 @@ urlpatterns = [
     
     path('sources/', SourceListCreate.as_view(), name='source-list-create'),
     path('sources/<int:pk>/', SourceDetail.as_view(), name='source-detail'),
+
+    path('map/', MapListCreate.as_view(), name='source-list-create'),
+    path('map/<int:pk>/', MapDetail.as_view(), name='source-detail'),
 ]

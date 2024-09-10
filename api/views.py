@@ -1,6 +1,6 @@
 from rest_framework import generics
-from core.models import Beach, CommentSection, GeneralCommentSection, Comment, Report, Source
-from .serializers import BeachSerializer, CommentSectionSerializer, GeneralCommentSectionSerializer, CommentSerializer, ReportSerializer, SourceSerializer
+from core.models import Beach, CommentSection, GeneralCommentSection, Comment, Report, Source, Map
+from .serializers import BeachSerializer, CommentSectionSerializer, GeneralCommentSectionSerializer, CommentSerializer, ReportSerializer, SourceSerializer, MapSerializer
 
 class BeachListCreate(generics.ListCreateAPIView):
     queryset = Beach.objects.all()
@@ -49,3 +49,11 @@ class SourceListCreate(generics.ListCreateAPIView):
 class SourceDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Source.objects.all()
     serializer_class = SourceSerializer
+
+class MapListCreate(generics.ListCreateAPIView):
+    queryset = Map.objects.all()
+    serializer_class = MapSerializer
+
+class MapDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Map.objects.all()
+    serializer_class = MapSerializer    

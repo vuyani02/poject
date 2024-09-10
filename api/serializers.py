@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from core.models import Beach, CommentSection, GeneralCommentSection, Comment, Report, Source
+from core.models import Beach, CommentSection, GeneralCommentSection, Comment, Report, Source, Map
 
 class BeachSerializer(serializers.ModelSerializer):
     class Meta:
@@ -29,4 +29,9 @@ class ReportSerializer(serializers.ModelSerializer):
 class SourceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Source
+        fields = '__all__'
+
+class MapSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Map
         fields = '__all__'

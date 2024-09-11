@@ -28,8 +28,12 @@ class GeneralCommentSectionDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = GeneralCommentSectionSerializer'''
 
 class CommentListCreate(generics.ListCreateAPIView):
-    queryset = Comment.objects.all()
+    #queryset = Comment.objects.all()
     serializer_class = CommentSerializer
+
+    def get_queryset(self):
+        beach_id = self.kwargs['beach_id']
+        return Comment.objects.filter(beach__id=beach_id)
 
 class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Comment.objects.all()

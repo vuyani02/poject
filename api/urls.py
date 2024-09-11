@@ -9,7 +9,7 @@ urlpatterns = [
     path('comment-sections/', CommentSectionListCreate.as_view(), name='comment-section-list-create'),
     path('comment-sections/<int:pk>/', CommentSectionDetail.as_view(), name='comment-section-detail'),
     
-    path('comments/', CommentListCreate.as_view(), name='comment-list-create'),
+    path('beaches/<int:beach_id>/comments/',  CommentListCreate.as_view(), name='beach-comments'),
     path('comments/<int:pk>/', CommentDetail.as_view(), name='comment-detail'),
     
     path('reports/', ReportListCreate.as_view(), name='report-list-create'),

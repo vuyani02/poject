@@ -37,7 +37,7 @@ class CommentSection(models.Model):
 
 class Comment(models.Model):
     beach = models.ForeignKey(Beach, on_delete=models.CASCADE, null=True, blank=True)
-    comment_section = models.ForeignKey(CommentSection, on_delete=models.CASCADE, related_name='comments')
+    #comment_section = models.ForeignKey(CommentSection, on_delete=models.CASCADE, related_name='comments')
     #general_comment_section = models.ForeignKey(GeneralCommentSection, on_delete=models.CASCADE, related_name='comments', null=True, blank=True)
     user_name = models.CharField(max_length=100, default='Anonymous')
     text = models.TextField()

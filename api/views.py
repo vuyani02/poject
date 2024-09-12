@@ -1,6 +1,8 @@
 from rest_framework import generics
 from core.models import Beach, CommentSection, Comment, Report, Source, Map
 from .serializers import BeachSerializer, CommentSectionSerializer, CommentSerializer, ReportSerializer, SourceSerializer, MapSerializer
+from rest_framework.response import Response
+from rest_framework import status
 
 class BeachListCreate(generics.ListCreateAPIView):
     queryset = Beach.objects.all()
@@ -34,6 +36,11 @@ class CommentListCreate(generics.ListCreateAPIView):
     def get_queryset(self):
         beach_id = self.kwargs['beach_id']
         return Comment.objects.filter(beach__id=beach_id)
+    
+    def perform_create(self, serializer):
+        beach_id = self.kwargs['beach_id']
+        serializer.save(beach_id=beach_id)
+
 
 class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Comment.objects.all()

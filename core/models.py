@@ -3,6 +3,7 @@ from django.utils import timezone
 
 class Beach(models.Model):
     name = models.CharField(max_length=100)
+    urlName = models.CharField(max_length=100)
     location = models.CharField(max_length=200)
     status = models.CharField(max_length=20, choices=[('Safe to Swim', 'Safe to Swim'), ('Unsafe to Swim', 'Unsafe to Swim')])
     description = models.TextField()
@@ -15,10 +16,10 @@ class Beach(models.Model):
     sunday_temperature = models.FloatField(max_length=100)
     sunday_rain = models.CharField(max_length=100)
     sunday_wind_speed = models.FloatField(max_length=100)
-    busyness = models.CharField(max_length=100)
-    last_updated = models.CharField(max_length=100)
+    #busyness = models.CharField(max_length=100)
+    #last_updated = models.CharField(max_length=100)
     picture = models.ImageField(upload_to='beach_pictures/')
-    fun_facts = models.TextField(blank=True)
+    funFacts = models.TextField(blank=True)
     
     def __str__(self):
         return self.name
@@ -54,15 +55,15 @@ class Comment(models.Model):
         super().save(*args, **kwargs)'''
 
 class Report(models.Model):
-    CROWD_LEVEL_CHOICES = [(i, str(i)) for i in range(1, 11)]  # Choices from 1 to 10
+    #CROWD_LEVEL_CHOICES = [(i, str(i)) for i in range(1, 11)]  # Choices from 1 to 10
 
     report_id = models.AutoField(primary_key=True)
     beach = models.ForeignKey('Beach', on_delete=models.CASCADE, related_name='reports')
     detail = models.TextField()  # Description or detail of the report
     source = models.URLField(blank=True, null=True)  # Can be an image URL or a webpage URL
     timestamp = models.DateTimeField(default=timezone.now)
-    crowd_level = models.IntegerField(choices=CROWD_LEVEL_CHOICES)  # An integer representing the crowd level, e.g., 1-10 scale
-    comment = models.TextField()  # Optional, linked to a comment if applicable
+    #crowd_level = models.IntegerField(choices=CROWD_LEVEL_CHOICES)  # An integer representing the crowd level, e.g., 1-10 scale
+    #comment = models.TextField()  # Optional, linked to a comment if applicable
 
     def __str__(self):
         return f"Report {self.report_id} on {self.beach.name}"    

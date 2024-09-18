@@ -1,20 +1,10 @@
 from rest_framework import serializers
-from core.models import Beach, CommentSection, Comment, Report, Source, Map
+from core.models import Beach, Comment, Report, Map, EducationalContent
 
 class BeachSerializer(serializers.ModelSerializer):
     class Meta:
         model = Beach
         fields = '__all__'
-
-class CommentSectionSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = CommentSection
-        fields = '__all__'
-
-'''class GeneralCommentSectionSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = GeneralCommentSection
-        fields = '__all__'''
 
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -26,12 +16,12 @@ class ReportSerializer(serializers.ModelSerializer):
         model = Report
         fields = '__all__'
 
-class SourceSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Source
-        fields = '__all__'
-
 class MapSerializer(serializers.ModelSerializer):
     class Meta:
         model = Map
         fields = '__all__'
+
+class EducationalContentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = EducationalContent
+        fields = '__all__'        

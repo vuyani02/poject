@@ -7,17 +7,18 @@ class Beach(models.Model):
     location = models.CharField(max_length=200)
     status = models.CharField(max_length=20, choices=[('Safe to Swim', 'Safe to Swim'), ('Unsafe to Swim', 'Unsafe to Swim')])
     description = models.TextField()
-    current_temperature = models.FloatField(max_length=100)
+    current_temperature = models.FloatField()
     current_rain = models.CharField(max_length=100)
-    current_wind_speed = models.FloatField(max_length=100)
+    current_wind_speed = models.FloatField()
     saturday_temperature = models.FloatField(max_length=100)
     saturday_rain = models.CharField(max_length=100)
-    saturday_wind_speed = models.FloatField(max_length=100)
-    sunday_temperature = models.FloatField(max_length=100)
+    saturday_wind_speed = models.FloatField()
+    sunday_temperature = models.FloatField()
     sunday_rain = models.CharField(max_length=100)
-    sunday_wind_speed = models.FloatField(max_length=100)
+    sunday_wind_speed = models.FloatField()
     picture = models.ImageField(upload_to='beach_pictures/')
     funFacts = models.TextField(blank=True)
+    average_rating = models.FloatField(default=0.0)
     
     def __str__(self):
         return self.name
@@ -27,6 +28,7 @@ class Comment(models.Model):
     user_name = models.CharField(max_length=100, default='Anonymous')
     text = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
+    rating = models.FloatField()
 
     def __str__(self):
         return f"Comment by {self.user_name} on {self.timestamp}"
@@ -46,8 +48,8 @@ class Map(models.Model):
     map_id = models.AutoField(primary_key=True)
     beach = models.ForeignKey('Beach', on_delete=models.CASCADE, related_name='map', null=True, blank=True)
     location = models.CharField(max_length=100)
-    coordinateLat = models.FloatField(max_length=100)  
-    coordinateLong = models.FloatField(max_length=100)
+    coordinateLat = models.FloatField()  
+    coordinateLong = models.FloatField()
 
     def __str__(self):
         return  self.location
